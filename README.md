@@ -20,7 +20,7 @@ def factorial(n):
 # 3. Check Prime Number
 ```python
 def isPrime(n):
-	if n <= 3:
+	if n <= 1:
 		return True
 	
 	x = n // 2
