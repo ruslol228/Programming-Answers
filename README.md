@@ -1,4 +1,124 @@
 # Programming Answers
+
+# **NEW QUESTIONS**
+
+# 31. Square Even Numbers
+```python
+def squareEvenNumbers(arr):
+    return [x**2 for x in arr if x % 2 == 0]
+```
+
+# 32. Extract First Letters
+```python
+def extractFirstLetters(arr):
+    return [x[1] for x in arr if len(x) > 3]
+```
+
+# 33. Filter and Format Prices
+```python
+def filterAndFormatPrices(arr):
+    return [f'Product: {x[0]}, Price: ${x[1]}' for x in arr if x[1] > 10]
+```
+
+# 34. Simple Calculator
+```python
+class SimpleCalculator:
+    def __init__(self):
+        self.__result = 0
+    
+    def add(self, num):
+        self.__result += num
+    
+    def subtract(self, num):
+        self.__result -= num
+    
+    def get_result(self):
+        return self.__result
+
+calc = SimpleCalculator()
+calc.add(15)
+calc.subtract(10)
+print(calc.get_result())
+```
+
+# 35. Student Information
+```python
+class StudentInformation:
+    def __init__(self, name: str, age: int, grades: list):
+        self.name, self.age, self.grades = name, age, grades
+    
+    def average_grade(self):
+        return round(sum(self.grades) / len(self.grades), 2) if self.grades else 0
+
+student = StudentInformation(name='Goofy', age=18, grades=[80, 75, 90])
+print(student.average_grade())
+```
+
+# 36. Rectangle Area and Perimeter
+```python
+class Rectangle:
+    def __init__(self, width: float, height: float):
+        self.__width, self.__height = width, height
+        self.__area = self.__width * self.__height
+        self.__perimeter = 2 * (self.__width + self.__height)
+    
+    def __update_values(self):
+        self.__area = self.__width * self.__height
+        self.__perimeter = 2 * (self.__width + self.__height)
+    
+    def area(self):
+        return self.__area
+    
+    def perimeter(self):
+        return self.__perimeter
+    
+    @property
+    def width(self):
+        return self.__width
+    
+    @width.setter
+    def width(self, value):
+        self.__width = value
+        self.__update_values()
+    
+    @property
+    def height(self):
+        return self.__height
+    
+    @height.setter
+    def height(self, value):
+        self.__height = value
+        self.__update_values()
+
+
+rect = Rectangle(width=2, height=5)
+print(rect.area())
+print(rect.perimeter())
+rect.width = 4
+rect.height = 10
+print(rect.area())
+print(rect.perimeter())
+```
+
+# 37. Factorial Calculation (with loop)
+```python
+def calculate_factorial(n):
+    if n == 0: return 1
+    result = n
+    for i in range(n-1, 1, -1):
+        result *= i
+    return result
+```
+
+# 54. Safe Integer Conversion
+```python
+def safe_int_conversion(value):
+    try:
+        return int(value)
+    except ValueError:
+        return None
+```
+
 # 1. Sum of all digits
 ```python
 def sumDigits(s):
@@ -398,16 +518,23 @@ def validParentheses(s):
 
 # 40. Merge Two Sorted Lists
 ```python
-def merge(list1, list2):
-    result = []
-    if(list1[0] < list2[0]):
-        result.extend(list1)
-        result.extend(list2)
-    else:
-        result.extend(list2)
-        result.extend(list1)
-    return result
-print(merge([10,11,12,13],[1,2,3,4,5]))
+def mergeTwoSortedLists(arr1, arr2):
+    new_list = []
+    new_length = len(arr1) + len(arr2)
+    pointer1 = 0
+    pointer2 = 0
+    
+    for i in range(new_length):
+        if arr1[pointer1] < arr2[pointer2]:
+            new_list.append(arr1[pointer1])
+            pointer1 = min(len(arr1) - 1, pointer1 + 1)
+        else:
+            new_list.append(arr2[pointer2])
+            pointer2 = min(len(arr2) - 1, pointer2 + 1)
+    
+    new_list[-1] = max(arr1[-1], arr2[-1])
+    
+    return new_list
 ```
 
 # 41. First Non-Repeating Character
