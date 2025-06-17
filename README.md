@@ -57,45 +57,17 @@ print(student.average_grade())
 # 36. Rectangle Area and Perimeter
 ```python
 class Rectangle:
-    def __init__(self, width: float, height: float):
-        self.__width, self.__height = width, height
-        self.__area = self.__width * self.__height
-        self.__perimeter = 2 * (self.__width + self.__height)
-    
-    def __update_values(self):
-        self.__area = self.__width * self.__height
-        self.__perimeter = 2 * (self.__width + self.__height)
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
     
     def area(self):
-        return self.__area
+        return self.width * self.height
     
     def perimeter(self):
-        return self.__perimeter
+        return 2 * (self.width + self.height)
     
-    @property
-    def width(self):
-        return self.__width
-    
-    @width.setter
-    def width(self, value):
-        self.__width = value
-        self.__update_values()
-    
-    @property
-    def height(self):
-        return self.__height
-    
-    @height.setter
-    def height(self, value):
-        self.__height = value
-        self.__update_values()
-
-
-rect = Rectangle(width=2, height=5)
-print(rect.area())
-print(rect.perimeter())
-rect.width = 4
-rect.height = 10
+rect = Rectangle(2, 5)
 print(rect.area())
 print(rect.perimeter())
 ```
